@@ -26,10 +26,13 @@ The goal is to automate student performance analysis, generate predictions, and 
 ---
 
 ## Tech Stack
-- **Python**: `pandas`, `scikit-learn`, `joblib`, `openpyxl`
-- **Power BI Desktop**
-- **Microsoft Power Automate**
-- **Microsoft Copilot**
+- **Python** (*required*) → [Download](https://www.python.org/downloads/)  
+  Libraries: `pandas`, `scikit-learn`, `joblib`, `openpyxl`
+- **Power BI Desktop** (*required*) → [Download](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads)  
+
+### Future Extensions (Optional)
+- **Microsoft Power Automate** → Can be added by users for workflow automation/reporting
+- **Microsoft Copilot** → Can be integrated via Copilot Studio to build AI agents
 
 ---
 
@@ -125,6 +128,7 @@ This project is for academic and internship purposes.
 Feel free to reference or adapt with proper credit.
 
 ---
+
 ## 🔗 References
 - [Co-pilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/fundamentals-what-is-copilot-studio)  
 - [Microsoft Learn – Github Co-pilot](https://learn.microsoft.com/en-us/training/paths/copilot/)  
@@ -132,7 +136,6 @@ Feel free to reference or adapt with proper credit.
 >**NOTE:** The Dataset used for this Project was not taken from any other source. 
 
 ---
-
 
 ## Extras
 ### Notes on `pass_classifier.pkl`
@@ -164,3 +167,4 @@ predictions = model.predict(X_test)
 
 This ensures consistency — the same trained model can be reused without retraining every time.
 
+---
