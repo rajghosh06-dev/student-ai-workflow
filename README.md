@@ -1,55 +1,166 @@
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange)
+![PowerBI](https://img.shields.io/badge/PowerBI-Dashboard-yellow)
+![Automation](https://img.shields.io/badge/PowerAutomate-Workflow-lightblue)
+![Copilot](https://img.shields.io/badge/Microsoft-Copilot-purple)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-green)
+
 # Student AI Workflow
 
 ## Overview
 This project is part of the **Microsoft Elevate Internship (December 2025 Batch)**.  
-It extends a Power BI student marks dashboard into an **AI-powered workflow** using Python, Copilot, and Power Automate.
+It extends a Power BI student marks dashboard into an **AI-powered workflow** using Python, Copilot, and Power Automate.  
+The goal is to automate student performance analysis, generate predictions, and deliver insights through a modular, reproducible pipeline.
+
+---
 
 ## Features
-- Student marks dataset (Excel) for analysis
 - Power BI dashboard with KPIs, grade distribution, and subject averages
+- Student marks dataset (Excel) for rule-based and predictive analysis
 - Python ML pipeline (scikit-learn) for pass/fail and grade prediction
-- Copilot-generated insights and recommendations
-- Power Automate workflow for automation and reporting
+- Copilot-generated insights and conditional formatting logic
+- Power Automate workflow for automated reporting and refresh
+- Organized folder structure for reproducibility and clarity
+
+---
 
 ## Tech Stack
-- Python (pandas, scikit-learn, joblib, openpyxl)
-- Power BI Desktop
-- Microsoft Power Automate
-- Microsoft Copilot
+- **Python**: `pandas`, `scikit-learn`, `joblib`, `openpyxl`
+- **Power BI Desktop**
+- **Microsoft Power Automate**
+- **Microsoft Copilot**
+
+---
 
 ## Project Structure
 ```
 student-ai-workflow/
-├─ data/          # raw and processed datasets
-├─ models/        # saved ML models
-├─ scripts/       # training and pipeline scripts
-├─ powerbi/       # Power BI dashboard (.pbix)
+├─ data/
+│   ├─ raw/
+│   │   └─ Student_Marks_Result_Analysis_MS-ELEVATE_CO-PILOT_PROJECT_DATASET_RISHIT-GHOSH.xlsx
+│   └─ processed/
+│       ├─ student_predictions_20260115_151427.csv
+│       └─ student_predictions_latest.csv
+├─ docs/
+│   └─ screenshots/          # Dashboard visuals
+├─ exports/                  # Optional output files
+├─ models/
+│   └─ pass_classifier.pkl   # Trained ML model
+├─ powerbi/
+│   └─ Student_Marks_Result_Analysis_MS-ELEVATE_CO-PILOT_PROJECT_RISHIT-GHOSH.pbix
+├─ scripts/
+│   ├─ train_model.py        # Model training script
+│   └─ run_pipeline.py       # Prediction and export pipeline
+├─ venv/                     # Python virtual environment
+├─ .gitignore
+├─ LICENSE
+├─ README.md
 └─ requirements.txt
 ```
 
-## How to Run
-1. Create virtual environment:
-   ```
-   python -m venv venv
-   .\venv\Scripts\Activate
-   ```
-2. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
-3. Train model:
-   ```
-   python scripts/train_model.py
-   ```
-4. Run pipeline:
-   ```
-   python scripts/run_pipeline.py
-   ```
-5. Open Power BI dashboard and refresh.
-
 ---
 
-*This README is a short version. More details, screenshots, and documentation will be added later.*
+## How to Run
+
+### 1. Set up environment
+```bash
+python -m venv venv
+.\venv\Scripts\Activate   # On Windows
 ```
 
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Train the model
+```bash
+python scripts/train_model.py
+```
+
+### 4. Run prediction pipeline
+```bash
+python scripts/run_pipeline.py
+```
+
+### 5. Open Power BI dashboard
+- Navigate to `powerbi/Student_Marks_Result_Analysis_MS-ELEVATE_CO-PILOT_PROJECT_RISHIT-GHOSH.pbix`
+- Click **Refresh** to load latest predictions
+
 ---
+
+## Dashboard Pages
+
+### 1. **Marks & Result Analysis**
+- Rule-based evaluation of student marks
+- KPIs: Total Students, Average Marks, Pass %, Top Scorer
+- Visuals: Pass/Fail pie chart, subject averages, student table
+
+### 2. **AI Predictions & Comparative Analysis**
+- AI-driven predictions vs rule-based outcomes
+- KPIs: Predicted Pass %, Average Overall Marks
+- Visuals: Grade distribution, subject averages, pass % comparison
+- Student-level prediction table with conditional formatting
+
+---
+
+## Notes
+- Sample tables show 7–8 rows for layout clarity; full dataset is available in `data/processed/`
+- Dashboard visuals are stored in `docs/screenshots/`
+- Project authored by **Rishit Ghosh** as part of the **Microsoft Elevate Internship**
+
+---
+
+## Author
+Developed by [**RISHIT GHOSH**](https://github.com/rajghosh06-dev)  
+B.Tech CSE (AI & ML), Geethanjali College of Engineering and Technology  
+**MS Elevate Internship | Capstone Project | December 2025 Batch | Microsoft Copilot**  
+Check out my Portfolio [here](https://rajghosh06-dev.github.io/portfolio/index.html).  
+
+---
+
+## License
+This project is for academic and internship purposes.  
+Feel free to reference or adapt with proper credit.
+
+---
+## 🔗 References
+- [Co-pilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/fundamentals-what-is-copilot-studio)  
+- [Microsoft Learn – Github Co-pilot](https://learn.microsoft.com/en-us/training/paths/copilot/)  
+
+>**NOTE:** The Dataset used for this Project was not taken from any other source. 
+
+---
+
+
+## Extras
+### Notes on `pass_classifier.pkl`
+
+The file `pass_classifier.pkl` is a **serialized machine learning model** created during training.  
+It contains the logic and parameters of the classifier used to predict whether a student will **pass (1)** or **fail (0)** based on their marks.
+
+- **How it’s created:**  
+  Generated by running `train_model.py`, which trains the model using scikit-learn and saves it with `joblib` or `pickle`.
+
+- **What it stores:**  
+  - The chosen algorithm (e.g., Logistic Regression, Decision Tree, etc.)  
+  - Learned weights/parameters from the training dataset  
+  - Any preprocessing steps included in the pipeline  
+
+- **How it’s used:**  
+  When you run `run_pipeline.py`, the `.pkl` file is loaded and applied to new student data to generate predictions (`Predicted_Pass`, `Predicted_Grade`).
+
+Example usage:
+```python
+import joblib
+
+# Load trained model
+model = joblib.load('models/pass_classifier.pkl')
+
+# Predict outcomes
+predictions = model.predict(X_test)
+```
+
+This ensures consistency — the same trained model can be reused without retraining every time.
+
