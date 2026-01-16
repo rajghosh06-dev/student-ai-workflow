@@ -26,15 +26,42 @@ The goal is to automate student performance analysis, generate predictions, and 
 ---
 
 ## Tech Stack
-- **Python** (*required*) → [Download](https://www.python.org/downloads/)  
+- **Python** (**required*) → [Download](https://www.python.org/downloads/)  
   Libraries: `pandas`, `scikit-learn`, `joblib`, `openpyxl`
-- **Power BI Desktop** (*required*) → [Download](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads)  
+- **Power BI Desktop** (**required*) → [Download](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads)  
 
 ### Future Extensions (Optional)
 - **Microsoft Power Automate** → Can be added by users for workflow automation/reporting
 - **Microsoft Copilot** → Can be integrated via Copilot Studio to build AI agents
 
 ---
+
+## Screenshots
+
+### 🔹 Run Pipeline [1st]
+![Code Running Overview](docs/screenshots/run_pipelinePY-running.png)
+
+### 🔹 Train Model [2nd]
+![Code Running Overview](docs/screenshots/train_modelPY-running.png)
+
+### 🔹 Marks & Result Analysis Dashboard [3rd]
+![Dashboard Overview](docs/screenshots/marks-result-analysis-dashboard.png)
+
+### 🔹 AI Prediction & Comparative Analysis Dashboard [4th]
+![Dashboard Overview](docs/screenshots/ai-predictions-comparative-analysis-dashboard.png)
+
+### 🔹 Marks & Result Analysis [5th]
+![Dashboard Overview](docs/screenshots/marks-result-analysis-main.png)
+
+### 🔹 AI Prediction & Comparative Analysis [6th]
+![Dashboard Overview](docs/screenshots/ai-predictions-comparative-analysis-main.png)
+
+---
+
+> To view the main project file: [Click here](powerbi/Student_Marks_Result_Analysis_MS-ELEVATE_CO-PILOT_PROJECT_RISHIT-GHOSH.pbix) 
+>> NOTE: This file requries an compatible app for opening. Refer **[Tech Stack](#tech-stack)** for more information.
+
+----
 
 ## Project Structure
 ```
@@ -63,6 +90,8 @@ student-ai-workflow/
 ```
 
 ---
+---
+
 
 ## How to Run
 
@@ -107,12 +136,53 @@ python scripts/run_pipeline.py
 - Student-level prediction table with conditional formatting
 
 ---
+## How It Works
+
+This project automates student performance analysis using a modular AI workflow built with Python and Power BI. Here's a breakdown of how the system operates:
+
+### 1. Raw Data Ingestion
+- The student marks dataset (`.xlsx`) is stored in `data/raw/`.
+- It contains subject-wise scores for each student, along with identifiers like `StudentID` and `Name`.
+
+### 2. Preprocessing & Feature Engineering
+- The script `run_pipeline.py` reads the Excel file and computes:
+  - Subject-wise average marks
+  - Overall average score
+  - Minimum subject mark
+- These features are used to derive rule-based outcomes:
+  - `Rule_Pass`: Pass if `OverallAvg ≥ 40` and `MinSubjectMark ≥ 35`
+  - `Rule_Grade`: Grade assigned using thresholds → A (≥75), B (60–74), C (<60)
+
+### 3. Model Prediction
+- A pre-trained **Logistic Regression model** (`pass_classifier.pkl`) is loaded from `models/`.
+- It predicts whether a student will pass based on the engineered features.
+- Predicted grades are also assigned using the same thresholds on `OverallAvg`.
+
+### 4. Exporting Results
+- The final student-level view includes:
+  - Rule-based vs Predicted Pass/Fail
+  - Rule-based vs Predicted Grade
+- Two CSVs are saved in `data/processed/`:
+  - `student_predictions_<timestamp>.csv` → For historical tracking
+  - `student_predictions_latest.csv` → Used by Power BI for dashboard refresh
+
+### 5. Dashboard Visualization
+- Power BI loads the latest CSV and displays:
+  - Comparative KPIs (Pass %, Grade Distribution)
+  - Charts (Pie, Bar)
+  - Student-level performance table with conditional formatting
+- Two dashboard pages:
+  - **Marks & Result Analysis** (Rule-based)
+  - **AI Predictions & Comparative Analysis** (ML-based)
+
+---
 
 ## Notes
 - Sample tables show 7–8 rows for layout clarity; full dataset is available in `data/processed/`
 - Dashboard visuals are stored in `docs/screenshots/`
 - Project authored by **Rishit Ghosh** as part of the **Microsoft Elevate Internship**
 
+---
 ---
 
 ## Author
@@ -135,6 +205,7 @@ Feel free to reference or adapt with proper credit.
 
 >**NOTE:** The Dataset used for this Project was not taken from any other source. 
 
+---
 ---
 
 ## Extras

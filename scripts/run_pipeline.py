@@ -4,7 +4,7 @@ import joblib
 import os
 from datetime import datetime
 
-RAW = "data/raw/Student_Marks_Result_Analysis_MS-ELEVATE_DATASET_RISHIT-GHOSH.xlsx"
+RAW = "data/raw/Student_Marks_Result_Analysis_MS-ELEVATE_CO-PILOT_PROJECT_DATASET_RISHIT-GHOSH.xlsx"
 SHEET = "Sheet1"
 MODEL_PATH = "models/pass_classifier.pkl"
 OUT_DIR = "data/processed"
