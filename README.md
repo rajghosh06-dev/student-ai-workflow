@@ -74,11 +74,16 @@ student-ai-workflow/
 │       └─ student_predictions_latest.csv
 ├─ docs/
 │   └─ screenshots/          # Dashboard visuals
-├─ exports/                  # Optional output files
+├─ exports/
+│   ├─ AI-Prediction-and-Comparative-Analysis_MS-ELEVATE_CO-PILOT_PROJECT_RISHIT-GHOSH.pdf
+│   └─ Student_Marks_Result_Analysis_MS-ELEVATE_CO-PILOT_PROJECT_PRESENTATION_RISHIT-GHOSH.pdf
 ├─ models/
 │   └─ pass_classifier.pkl   # Trained ML model
 ├─ powerbi/
 │   └─ Student_Marks_Result_Analysis_MS-ELEVATE_CO-PILOT_PROJECT_RISHIT-GHOSH.pbix
+├─ presentation/
+│   ├─ Student_Marks_Result_Analysis_MS-ELEVATE_CO-PILOT_PROJECT_PRESENTATION_RISHIT-GHOSH.pptx
+│   └─ Student_Marks_Result_Analysis_MS-ELEVATE_CO-PILOT_PROJECT_PRESENTATION_RISHIT-GHOSH.pdf
 ├─ scripts/
 │   ├─ train_model.py        # Model training script
 │   └─ run_pipeline.py       # Prediction and export pipeline
